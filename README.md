@@ -24,7 +24,7 @@
 
 ## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+this is our backend project of  quiz maker website using [Nest](https://github.com/nestjs/nest) framework and MySQL in database.
 
 ## Installation
 
