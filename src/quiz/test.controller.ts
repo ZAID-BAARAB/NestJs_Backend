@@ -24,6 +24,11 @@ export class TestController {
     return this.testService.findOne(id);
   }
 
+  @Get('/findbyname/:name')
+  findByName(@Param('name') name: string) {
+    return this.testService.findByName(name);
+  }
+
   @Get('/creator/:id')
   findByCreator(@Param('id', ParseIntPipe) creatorId: number) {
     return this.testService.findByCreator(creatorId);

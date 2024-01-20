@@ -16,14 +16,14 @@ export class RolesGuard implements CanActivate {
     ]);
 
     if (!requiredRoles.length) {
-      return false; // No roles specified, access granted
+      return false; 
     }
 
     const request = context.switchToHttp().getRequest();
     const token = request.cookies['jwt'];
 
     if (!token) {
-      return false; // No token, access denied
+      return false; 
     }
 
     try {

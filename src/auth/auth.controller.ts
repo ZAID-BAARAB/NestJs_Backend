@@ -1,4 +1,3 @@
-//src/auth/auth.controller.ts file
 import {
   BadRequestException,
   Body,
@@ -26,28 +25,6 @@ export class AuthController {
     private jwtService: JwtService,
   ) {}
 
-  //   async register(
-  //     @Body('name') name: string,
-  //     @Body('email') email: string,
-  //     @Body('password') password: string,
-  //     @Body('profession') profession: string,
-  //     @Body('country') country: string,
-  //     @Body('age') age: number,
-  //   ) {
-  //     const hashedPassword = await bcrypt.hash(password, 12);
-  //     const user = await this.authService.create({
-  //       name,
-  //       email,
-  //       password: hashedPassword,
-  //       profession,
-  //       country,
-  //       age,
-  //     });
-
-  //     delete user.password;
-
-  //     return user;
-  //   }
   @Post('register')
   async register(@Body() createUserDto: CreateTestUserDto) {
     const hashedPassword = await bcrypt.hash(createUserDto.password, 12);
@@ -90,7 +67,7 @@ export class AuthController {
 
     response.cookie('jwt', jwt, { httpOnly: true });
 
-    // return 'you are logged in successfully';
+    // returner 'you are logged in successfully';
 
     delete user.password;
 
@@ -127,7 +104,7 @@ export class AuthController {
     };
   }
 
-  @Get('feedback') // Define the route for the feedback endpoint
+  @Get('feedback')
   @UseGuards(RolesGuard)
   @Roles('admin')
   async getFeedback() {

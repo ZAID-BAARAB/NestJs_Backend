@@ -64,4 +64,19 @@ async delete(quizId: number, userId: number): Promise<void> {
   await this.quizRepository.remove(quiz);
 }
 
+async findByName(title: string):Promise<Quiz> {
+  const quiz = await
+ 
+  this.quizRepository.findOne({
+    where: {
+      title,
+    },
+  });
+
+  if (!quiz) {
+    throw new NotFoundException(`Quiz with title ${title} not found`);
+  }
+  return quiz;
+}
+
 }

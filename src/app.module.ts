@@ -14,7 +14,6 @@ import { JwtModule } from '@nestjs/jwt';
 
 @Module({
   imports: [
-    // avoid exposing DB credentials
     TypeOrmModule.forRoot({
       type: 'mysql',
       host: 'localhost',
@@ -23,7 +22,7 @@ import { JwtModule } from '@nestjs/jwt';
       password: 'Novel222@@@',
       database: 'test',
       entities: [User, Quiz, TestUser],
-      synchronize: false, // never use this unless you know what you're doing
+      synchronize: false,
     }),
     TypeOrmModule.forFeature([User]),
     JwtModule.register({
@@ -41,12 +40,12 @@ export class AppModule {
   configure(consumer: MiddlewareConsumer) {
     consumer
       .apply((req, res, next) => {
-        res.header('Access-Control-Allow-Origin', 'http://localhost:5173'); // '*' allows any origin
+        res.header('Access-Control-Allow-Origin', 'http://localhost:5173'); // accept HTTP request from Frontend
         res.header(
           'Access-Control-Allow-Headers',
           'Origin, X-Requested-With, Content-Type, Accept',
         );
-        res.header('Access-Control-Allow-Credentials', 'true'); // Allow credentials
+        res.header('Access-Control-Allow-Credentials', 'true');
         next();
       })
       .forRoutes({ path: '*', method: RequestMethod.ALL });

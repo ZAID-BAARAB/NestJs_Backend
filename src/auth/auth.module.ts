@@ -10,7 +10,7 @@ import { JwtStrategy } from './jwt.strategy';
 @Module({
   imports: [
     JwtModule.register({
-      secret: 'webavanceproject123', // Replace with  actual secret key in .env
+      secret: 'webavanceproject123',
       signOptions: { expiresIn: '1h' },
     }),
     TypeOrmModule.forFeature([TestUser]),

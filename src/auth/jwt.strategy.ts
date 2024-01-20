@@ -1,5 +1,3 @@
-/* eslint-disable prettier/prettier */
-// src/auth/jwt.strategy.ts file
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { PassportStrategy } from '@nestjs/passport';
 import { ExtractJwt, Strategy } from 'passport-jwt';
@@ -11,7 +9,7 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
   constructor(private readonly authService: AuthService) {
     super({
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-      secretOrKey: 'webavanceproject123', // Replace with your actual secret key
+      secretOrKey: 'webavanceproject123',
     });
   }
 
@@ -21,7 +19,7 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
     if (!user) {
       throw new UnauthorizedException();
     }
-    
+
     return user;
   }
 }
